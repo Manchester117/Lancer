@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="XXXXAppTest">
+    <!--对象仓库路径-->
+    <parameter name="repositoryPath" value="对象仓库的绝对路径"/>
+    <!--报告输出路径(必须使用相对路径)-->
+    <parameter name="reportRootPath" value="test-output"/>
+    <!--Android配置参数-->
+    <parameter name="platformName" value="Android"/>
+    <parameter name="app" value="APP的绝对路径"/>
+    <parameter name="udid" value="192.168.47.101:5555"/>
+    <parameter name="reuse" value="1"/>
+    <!--等待元素时长和间隔(单位:毫秒)-->
+    <parameter name="waitTimeInterval" value="200"/>
+    <parameter name="waitTimeout" value="5000"/>
+    <!--用户名/密码-->
+    <parameter name="userName" value="xxxxxxx@qq.com"/>
+    <parameter name="password" value="xxxxxxx"/>
+
+    <test name="Workflow_1">
+        <classes>
+            <class name="testcase.TestLoginAction">
+                <methods>
+                    <include name="loginBySubscribeNowPage"/>
+                    <include name="logoutByMorePage"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

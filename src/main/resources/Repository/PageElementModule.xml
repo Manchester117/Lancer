@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<repository>
+    <page name="欢迎页">
+        <locator type="xpath" locator="//android.widget.FrameLayout[@index='1']">欢迎页</locator>
+    </page>
+    <page name="退出对话框">
+        <locator type="xpath" locator="//android.widget.Button[@text='确定']">确定</locator>
+    </page>
+</repository>
