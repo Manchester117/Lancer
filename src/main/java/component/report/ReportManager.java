@@ -14,7 +14,7 @@ public class ReportManager {
     private static Logger logger = LogManager.getLogger(ReportManager.class);
     private static ExtentReports extent;
 
-    /**
+    /*
     * @description: 获取报告实例
     * @author:      Alex
     * @date:        2018/5/4
@@ -28,7 +28,7 @@ public class ReportManager {
         return extent;
     }
 
-    /**
+    /*
     * @description: 创建报告实例
     * @author:      Alex
     * @date:        2018/5/4

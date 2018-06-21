@@ -9,6 +9,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
+import java.text.MessageFormat;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -29,14 +30,14 @@ public class OperatorImpl implements Operator{
         this.driver = driver;
     }
 
-    /**
-    * @description: 获取屏幕大小-用于滑动屏幕
-    * @author:      Alex
-    * @date:        2018/5/4
-    * @time:        11:01
-    * @param:
-    * @return:      返回屏幕大小的Map
-    */
+    /*
+     * @description: 获取屏幕大小-用于滑动屏幕
+     * @author:      Zhao.Peng
+     * @date:        2018/5/4
+     * @time:        11:01
+     * @param:
+     * @return:      返回屏幕大小的Map
+     */
     private Map<String, Integer> getScreenSize() {
         Map<String, Integer> screenSizeInfo = new HashMap<>();
         try {
@@ -52,14 +53,14 @@ public class OperatorImpl implements Operator{
         return screenSizeInfo;
     }
 
-    /**
-    * @description: 获取元素的基础方法
-    * @author:      Alex
-    * @date:        2018/5/4
-    * @time:        11:01
-    * @param:       locator     元素实体
-    * @return:      返回元素
-    */
+    /*
+     * @description: 获取元素的基础方法
+     * @author:      Zhao.Peng
+     * @date:        2018/5/4
+     * @time:        11:01
+     * @param:       locator     元素实体
+     * @return:      返回元素
+     */
     @Override
     public Element getElement(Locator locator) {
         Element element = null;
@@ -86,6 +87,13 @@ public class OperatorImpl implements Operator{
         return element;
     }
 
+    /*
+     * @description: 点击页面元素
+     * @author:      Zhao.Peng
+     * @date:        2018/6/21
+     * @time:        15:49
+     * @param:       locator     元素实体
+     */
     @Override
     public void click(Locator locator) {
         if (Objects.isNull(locator)) {
@@ -102,6 +110,13 @@ public class OperatorImpl implements Operator{
         }
     }
 
+    /*
+     * @description: 在文本框输入内容
+     * @author:      Zhao.Peng
+     * @date:        2018/6/21
+     * @time:        15:49
+     * @param:       locator     元素实体
+     */
     @Override
     public void input(Locator locator, String value) {
         if (Objects.isNull(locator)) {
@@ -118,6 +133,13 @@ public class OperatorImpl implements Operator{
         }
     }
 
+    /*
+     * @description: 清空文本框中的内容
+     * @author:      Zhao.Peng
+     * @date:        2018/6/21
+     * @time:        15:49
+     * @param:       locator     元素实体
+     */
     @Override
     public void clear(Locator locator) {
         if (Objects.isNull(locator)) {
@@ -134,6 +156,14 @@ public class OperatorImpl implements Operator{
         }
     }
 
+    /*
+     * @description: 获取元素中的文本
+     * @author:      zhao.peng
+     * @date:        2018/6/21
+     * @time:        15:55
+     * @param:       locator    元素实体
+     * @return:      返回元素中的文本信息
+     */
     @Override
     public String getText(Locator locator) {
         if (Objects.isNull(locator)) {
@@ -151,6 +181,14 @@ public class OperatorImpl implements Operator{
         return null;
     }
 
+    /*
+     * @description: 判断元素是否存在
+     * @author:      zhao.peng
+     * @date:        2018/6/21
+     * @time:        15:56
+     * @param:       元素实体
+     * @return:      元素是否存在的boolean值
+     */
     @Override
     public boolean isElementExist(Locator locator) {
         if (Objects.isNull(locator)) {
@@ -168,66 +206,116 @@ public class OperatorImpl implements Operator{
         return isExist;
     }
 
+    /*
+     * @description: 使用adb命令向上滑动屏幕
+     * @author:      zhao.peng
+     * @date:        2018/6/21
+     * @time:        15:57
+     * @param:
+     * @return:
+     */
     @Override
     public void swipeToUp() {
         Map<String, Integer> screenSizeInfo = this.getScreenSize();
         Integer width = screenSizeInfo.get("width");
         Integer height = screenSizeInfo.get("height");
+
+        // 直接使用adb命令来滑动页面
+        String swipeToUpCommand = MessageFormat.format("adb shell input touchscreen swipe {0} {1} {2} {3}", width / 2, height * 0.2, width / 2, height * 0.8, 200);
         try {
             this.driver.sleep(1000);
-            this.driver.drag(width / 2, height * 0.2, width / 2, height * 0.8, 0.2);
-            logger.info("向上滑动");
+            Runtime.getRuntime().exec(swipeToUpCommand);
+            logger.info("向上滑动-命令: ", swipeToUpCommand);
         } catch (Exception e) {
             logger.warn("向上滑动屏幕异常");
             e.printStackTrace();
         }
     }
 
+    /*
+     * @description: 使用adb命令向下滑动屏幕
+     * @author:      zhao.peng
+     * @date:        2018/6/21
+     * @time:        15:58
+     * @param:
+     * @return:
+     */
     @Override
     public void swipeToDown() {
         Map<String, Integer> screenSizeInfo = this.getScreenSize();
         Integer width = screenSizeInfo.get("width");
         Integer height = screenSizeInfo.get("height");
+
+        // 直接使用adb命令来滑动页面
+        String swipeToDownCommand = MessageFormat.format("adb shell input touchscreen swipe {0} {1} {2} {3}", width / 2, height * 0.8, width / 2, height * 0.2, 200);
         try {
             this.driver.sleep(1000);
-            this.driver.drag(width / 2, height * 0.8, width / 2, height * 0.2, 0.2);
-            logger.info("向下滑动");
+            Runtime.getRuntime().exec(swipeToDownCommand);
+            logger.info(StringUtils.join("向下滑动-命令: ", swipeToDownCommand));
         } catch (Exception e) {
             logger.warn("向下滑动屏幕异常");
             e.printStackTrace();
         }
     }
 
+    /*
+     * @description: 使用adb命令向左滑动屏幕
+     * @author:      zhao.peng
+     * @date:        2018/6/21
+     * @time:        15:58
+     * @param:
+     * @return:
+     */
     @Override
     public void swipeToLeft() {
         Map<String, Integer> screenSizeInfo = this.getScreenSize();
         Integer width = screenSizeInfo.get("width");
         Integer height = screenSizeInfo.get("height");
+        // 直接使用adb命令来滑动页面
+        String swipeToLeftCommand = MessageFormat.format("adb shell input touchscreen swipe {0} {1} {2} {3}", width * 0.8, height / 2, width * 0.2, height / 2, 200);
         try {
             this.driver.sleep(1000);
-            this.driver.drag(width * 0.8, height / 2, width * 0.2, height / 2, 0.2);
-            logger.info("向左滑动");
+            Runtime.getRuntime().exec(swipeToLeftCommand);
+            logger.info(StringUtils.join("向左滑动-命令: ", swipeToLeftCommand));
         } catch (Exception e) {
             logger.warn("向左滑动屏幕异常");
             e.printStackTrace();
         }
     }
 
+    /*
+     * @description: 使用adb命令向右滑动屏幕
+     * @author:      zhao.peng
+     * @date:        2018/6/21
+     * @time:        15:59
+     * @param:
+     * @return:
+     */
     @Override
     public void swipeToRight() {
         Map<String, Integer> screenSizeInfo = this.getScreenSize();
         Integer width = screenSizeInfo.get("width");
         Integer height = screenSizeInfo.get("height");
+        // 直接使用adb命令来滑动页面
+        String swipeToRightCommand = MessageFormat.format("adb shell input touchscreen swipe {0} {1} {2} {3}", width * 0.2, height / 2, width * 0.8, height / 2, 200);
         try {
             this.driver.sleep(1000);
-            this.driver.drag(width * 0.2, height / 2, width * 0.8, height / 2, 0.2);
-            logger.info("向右滑动");
+            Runtime.getRuntime().exec(swipeToRightCommand);
+            logger.info(StringUtils.join("向右滑动-命令: ", swipeToRightCommand));
         } catch (Exception e) {
             logger.warn("向右滑动屏幕异常: ");
             e.printStackTrace();
         }
     }
 
+    /*
+     * @description: 使用adb命令退出App
+     * @author:      zhao.peng
+     * @date:        2018/6/21
+     * @time:        16:00
+     * @param:
+     * @return:
+     */
     @Override
     public void closeAppForAndroid(String packageName) {
         if (!StringUtils.isNoneBlank(packageName)) {

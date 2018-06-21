@@ -13,7 +13,7 @@ public class DriverManager {
     private volatile static DriverManager driverManager;
     private MacacaClient driver;
 
-    /**
+    /*
     * @description: 对MacacaDriver进行设置
     * @author:      Alex
     * @date:        2018/5/4
@@ -39,7 +39,7 @@ public class DriverManager {
         }
     }
 
-    /**
+    /*
     * @description: Driver的单例模式
     * @author:      Alex
     * @date:        2018/5/4

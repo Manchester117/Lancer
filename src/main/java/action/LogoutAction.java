@@ -6,7 +6,7 @@ import object.PageTemplate;
 public class LogoutAction extends BaseAction {
     private PageTemplate page;
 
-    /**
+    /*
      * @description:        注销用户
      * @author:             Alex
      * @date:               2018/5/4
@@ -19,7 +19,7 @@ public class LogoutAction extends BaseAction {
         page = new PageTemplate(driver, repoPath);
     }
     
-    /**
+    /*
     * @description: 注销用户
     * @author:      Alex
     * @date:        2018/5/4

@@ -18,7 +18,7 @@ public class PageTemplate {
     private String storage;
     private Operator operator;
 
-    /**
+    /*
     * @description: 页面模板实例化
     * @author:      Alex
     * @date:        2018/5/4
@@ -30,7 +30,7 @@ public class PageTemplate {
         this.operator = new OperatorImpl(driver);
     }
 
-    /**
+    /*
     * @description: 页面模板实例化
     * @author:      Alex
     * @date:        2018/5/4
@@ -44,7 +44,7 @@ public class PageTemplate {
         this.operator = new OperatorImpl(driver);
     }
 
-    /**
+    /*
     * @description: 设置当前的页面
     * @author:      Alex
     * @date:        2018/5/4
@@ -59,7 +59,7 @@ public class PageTemplate {
         locatorContainer = ElementParser.readRepository(moduleFullPath, pageName);
     }
 
-    /**
+    /*
     * @description: 根据元素名称从对象库获取元素对象
     * @author:      Alex
     * @date:        2018/5/4

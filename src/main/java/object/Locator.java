@@ -5,7 +5,7 @@ import macaca.client.common.GetElementWay;
 public class Locator {
     private GetElementWay locatorType;
     private String locatorIdentify;
-    /**
+    /*
     * @description: APP页面元素实例化
     * @author:      Alex
     * @date:        2018/5/4
@@ -18,7 +18,7 @@ public class Locator {
         this.locatorIdentify = locatorIdentify;
     }
 
-    /**
+    /*
     * @description: APP页面元素实例化
     * @author:      Alex
     * @date:        2018/5/4

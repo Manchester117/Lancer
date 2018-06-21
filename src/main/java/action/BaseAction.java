@@ -23,7 +23,7 @@ public class BaseAction {
         return page.isElementExist(elementName);
     }
 
-    /**
+    /*
     * @description:         对页面进行点击(不涉及具体元素)
     * @author:              Alex
     * @date:                2018/5/8
@@ -34,10 +34,9 @@ public class BaseAction {
     public void clickAnyPage(String moduleName, String pageName, String elementName) {
         page.setElementModule(moduleName, pageName);
         page.click(elementName);
-//        Tools.sleep(1000);
     }
 
-    /**
+    /*
      * @description         页面向左滑动
      * @author:             Alex
      * @date:               2018/5/4
@@ -50,7 +49,7 @@ public class BaseAction {
             page.swipeToLeft();
     }
 
-    /**
+    /*
      * @description         页面向右滑动
      * @author:             Alex
      * @date:               2018/5/4
@@ -63,7 +62,7 @@ public class BaseAction {
             page.swipeToRight();
     }
 
-    /**
+    /*
      * @description         页面向上滑动
      * @author:             Alex
      * @date:               2018/5/4
@@ -76,7 +75,7 @@ public class BaseAction {
             page.swipeToUp();
     }
 
-    /**
+    /*
      * @description         页面向下滑动
      * @author:             Alex
      * @date:               2018/5/4
@@ -89,7 +88,7 @@ public class BaseAction {
             page.swipeToDown();
     }
 
-    /**
+    /*
     * @description:         关闭APP的操作
     * @author:              Alex
     * @date:                2018/5/7

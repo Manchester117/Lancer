@@ -18,7 +18,7 @@ public class TestListener implements ITestListener {
     private static MacacaClient driver;
     private String reportFolderPath;
 
-    /**
+    /*
     * @description: 给监听器设置Driver实例,用于后面的截图方法
     * @author:      Alex
     * @date:        2018/5/4
@@ -30,7 +30,7 @@ public class TestListener implements ITestListener {
         driver = macacaDriver;
     }
 
-    /**
+    /*
     * @description: 测试开始-定义报告存放文件夹以及获取报告实例
     * @author:      Alex
     * @date:        2018/5/4
@@ -53,7 +53,7 @@ public class TestListener implements ITestListener {
         parentTest.set(parent);
     }
 
-    /**
+    /*
     * @description: 测试完成-进行报告写入
     * @author:      Alex
     * @date:        2018/5/4
@@ -66,7 +66,7 @@ public class TestListener implements ITestListener {
         extent.flush();
     }
 
-    /**
+    /*
     * @description: 测试方法开始
     * @author:      Alex
     * @date:        2018/5/4
@@ -80,7 +80,7 @@ public class TestListener implements ITestListener {
         test.set(childTest);
     }
 
-    /**
+    /*
      * @description: 测试方法验证成功-需要截图
      * @author:      Alex
      * @date:        2018/5/4
@@ -99,7 +99,7 @@ public class TestListener implements ITestListener {
         Tools.takeScreenShot(reportFolderPath, successMethodName, driver, test);                  // 成功后截图
     }
 
-    /**
+    /*
      * @description: 测试方法验证失败-需要截图
      * @author:      Alex
      * @date:        2018/5/4
@@ -118,7 +118,7 @@ public class TestListener implements ITestListener {
         Tools.takeScreenShot(reportFolderPath, failMethodName, driver, test);                     // 失败后截图
     }
 
-    /**
+    /*
     * @description: 测试方法跳过
     * @author:      Alex
     * @date:        2018/5/4

@@ -5,7 +5,7 @@ import object.PageTemplate;
 
 public class LoginAction extends BaseAction {
     private PageTemplate page;
-    /**
+    /*
      * @description         登录的构造方法
      * @author:             Alex
      * @date:               2018/5/4
@@ -18,7 +18,7 @@ public class LoginAction extends BaseAction {
         page = new PageTemplate(driver, repoPath);
     }
 
-    /**
+    /*
      * @description         登录操作的基础方法
      * @author:             Alex
      * @date:               2018/5/4
@@ -35,7 +35,7 @@ public class LoginAction extends BaseAction {
         page.click("登录");
     }
 
-    /**
+    /*
      * @description         通过机会页登录
      * @author:             Alex
      * @date:               2018/5/4
@@ -51,7 +51,7 @@ public class LoginAction extends BaseAction {
         page.click("退出");
     }
 
-    /**
+    /*
      * @description         通过消息页登录
      * @author:             Alex
      * @date:               2018/5/4
@@ -65,7 +65,7 @@ public class LoginAction extends BaseAction {
         this.login(userName, password);
     }
 
-    /**
+    /*
      * @description         通过简历页登录
      * @author:             Alex
      * @date:               2018/5/4
@@ -79,7 +79,7 @@ public class LoginAction extends BaseAction {
         this.login(userName, password);
     }
 
-    /**
+    /*
      * @description         通过我的页登录
      * @author:             Alex
      * @date:               2018/5/4

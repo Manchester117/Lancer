@@ -16,7 +16,7 @@ import java.util.*;
 public class ElementParser {
     private static Logger logger = LogManager.getLogger(ElementParser.class);
 
-    /**
+    /*
     * @description: 读取对象仓库的方法,按照仓库-模块-页面-元素的方式进行获取
     * @author:      Alex
     * @date:        2018/5/4
@@ -60,7 +60,7 @@ public class ElementParser {
         return locatorContainer;
     }
 
-    /**
+    /*
     * @description: 获取元素的定位类型
     * @author:      Alex
     * @date:        2018/5/4
