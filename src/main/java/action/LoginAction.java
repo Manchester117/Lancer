@@ -2,6 +2,9 @@ package action;
 
 import macaca.client.MacacaClient;
 import object.PageTemplate;
+import util.Tools;
+
+import java.util.Date;
 
 public class LoginAction extends BaseAction {
     private PageTemplate page;
@@ -16,6 +19,26 @@ public class LoginAction extends BaseAction {
     public LoginAction(MacacaClient driver, String repoPath) {
         super(driver, repoPath);
         page = new PageTemplate(driver, repoPath);
+    }
+
+    /*
+     * @description: 欢迎页的等待方法
+     * @author:      zhao.peng
+     * @date:        2018/6/21
+     * @time:        19:07
+     * @param:
+     * @return:      是否超时的Boolean值
+     */
+    public Boolean welcomePageAppear() {
+        Date beginTime = new Date();
+        while (!this.isElementExist("PageElementModule", "欢迎页", "欢迎首页")) {
+            Tools.sleep(1000);              // 如果元素没有出现则暂停1秒
+            Date endTime = new Date();
+            long delayTime = endTime.getTime() - beginTime.getTime();
+            if (delayTime / 1000 > 60)          // 如果1分钟没有出现则返回False
+                return Boolean.FALSE;
+        }
+        return Boolean.TRUE;
     }
 
     /*

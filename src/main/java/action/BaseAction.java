@@ -2,7 +2,6 @@ package action;
 
 import macaca.client.MacacaClient;
 import object.PageTemplate;
-import util.Tools;
 
 public class BaseAction {
     private PageTemplate page;
