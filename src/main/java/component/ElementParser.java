@@ -18,7 +18,7 @@ public class ElementParser {
 
     /*
     * @description: 读取对象仓库的方法,按照仓库-模块-页面-元素的方式进行获取
-    * @author:      Alex
+    * @author:      Griffin
     * @date:        2018/5/4
     * @time:        10:58
     * @param:       repositoryPath  仓库路径
@@ -62,7 +62,7 @@ public class ElementParser {
 
     /*
     * @description: 获取元素的定位类型
-    * @author:      Alex
+    * @author:      Griffin
     * @date:        2018/5/4
     * @time:        10:59
     * @param:       type    元素定位类型(id/xpath/name/class)

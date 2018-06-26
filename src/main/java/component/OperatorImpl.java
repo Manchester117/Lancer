@@ -32,7 +32,7 @@ public class OperatorImpl implements Operator {
 
     /*
     * @description: 获取屏幕大小-用于滑动屏幕
-    * @author:      Zhao.Peng
+    * @author:      Griffin
     * @date:        2018/5/4
     * @time:        11:01
     * @param:
@@ -55,7 +55,7 @@ public class OperatorImpl implements Operator {
 
     /*
     * @description: 获取元素的基础方法
-    * @author:      Zhao.Peng
+    * @author:      Griffin
     * @date:        2018/5/4
     * @time:        11:01
     * @param:       locator     元素实体
@@ -89,7 +89,7 @@ public class OperatorImpl implements Operator {
 
     /*
      * @description: 点击页面元素
-     * @author:      Zhao.Peng
+     * @author:      Griffin
      * @date:        2018/6/21
      * @time:        15:49
      * @param:       locator     元素实体
@@ -112,7 +112,7 @@ public class OperatorImpl implements Operator {
 
     /*
      * @description: 在文本框输入内容
-     * @author:      Zhao.Peng
+     * @author:      Griffin
      * @date:        2018/6/21
      * @time:        15:49
      * @param:       locator     元素实体
@@ -135,7 +135,7 @@ public class OperatorImpl implements Operator {
 
     /*
      * @description: 清空文本框中的内容
-     * @author:      Zhao.Peng
+     * @author:      Griffin
      * @date:        2018/6/21
      * @time:        15:49
      * @param:       locator     元素实体
@@ -158,7 +158,7 @@ public class OperatorImpl implements Operator {
 
     /*
     * @description: 获取元素中的文本
-    * @author:      zhao.peng
+    * @author:      Griffin
     * @date:        2018/6/21
     * @time:        15:55
     * @param:       locator    元素实体
@@ -183,7 +183,7 @@ public class OperatorImpl implements Operator {
 
     /*
     * @description: 判断元素是否存在
-    * @author:      zhao.peng
+    * @author:      Griffin
     * @date:        2018/6/21
     * @time:        15:56
     * @param:       元素实体
@@ -208,7 +208,7 @@ public class OperatorImpl implements Operator {
 
     /*
     * @description: 发送ADB命令
-    * @author:      zhao.peng
+    * @author:      Griffin
     * @date:        2018/6/26
     * @time:        15:55
     * @param:       ADB命令字符串
@@ -227,7 +227,7 @@ public class OperatorImpl implements Operator {
 
     /*
      * @description: 发送物理按键
-     * @author:      zhao.peng
+     * @author:      Griffin
      * @date:        2018/6/25
      * @time:        18:42
      * @param:       物理按键EnumCode
@@ -241,7 +241,7 @@ public class OperatorImpl implements Operator {
 
     /*
     * @description: 使用adb命令向上滑动屏幕
-    * @author:      zhao.peng
+    * @author:      Griffin
     * @date:        2018/6/21
     * @time:        15:57
     * @param:
@@ -267,7 +267,7 @@ public class OperatorImpl implements Operator {
 
     /*
     * @description: 使用adb命令向下滑动屏幕
-    * @author:      zhao.peng
+    * @author:      Griffin
     * @date:        2018/6/21
     * @time:        15:58
     * @param:
@@ -293,7 +293,7 @@ public class OperatorImpl implements Operator {
 
     /*
     * @description: 使用adb命令向左滑动屏幕
-    * @author:      zhao.peng
+    * @author:      Griffin
     * @date:        2018/6/21
     * @time:        15:58
     * @param:
@@ -318,7 +318,7 @@ public class OperatorImpl implements Operator {
 
     /*
     * @description: 使用adb命令向右滑动屏幕
-    * @author:      zhao.peng
+    * @author:      Griffin
     * @date:        2018/6/21
     * @time:        15:59
     * @param:
@@ -343,7 +343,7 @@ public class OperatorImpl implements Operator {
 
     /*
     * @description: 使用adb命令退出App
-    * @author:      zhao.peng
+    * @author:      Griffin
     * @date:        2018/6/21
     * @time:        16:00
     * @param:

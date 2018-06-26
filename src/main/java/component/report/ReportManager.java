@@ -16,7 +16,7 @@ public class ReportManager {
 
     /*
     * @description: 获取报告实例
-    * @author:      Alex
+    * @author:      Griffin
     * @date:        2018/5/4
     * @time:        10:50
     * @param:       reportName  报告名称
@@ -30,7 +30,7 @@ public class ReportManager {
 
     /*
     * @description: 创建报告实例
-    * @author:      Alex
+    * @author:      Griffin
     * @date:        2018/5/4
     * @time:        10:49
     * @param:       reportName  报告名称

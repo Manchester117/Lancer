@@ -10,7 +10,7 @@ public class LoginAction extends BaseAction {
     private PageTemplate page;
     /*
      * @description         登录的构造方法
-     * @author:             Alex
+     * @author:             Griffin
      * @date:               2018/5/4
      * @time:               10:46
      * @param driver        Macaca Driver
@@ -43,7 +43,7 @@ public class LoginAction extends BaseAction {
 
     /*
      * @description         登录操作的基础方法
-     * @author:             Alex
+     * @author:             Griffin
      * @date:               2018/5/4
      * @time:               10:46
      * @param userName      用户名
@@ -60,7 +60,7 @@ public class LoginAction extends BaseAction {
 
     /*
      * @description         通过机会页登录
-     * @author:             Alex
+     * @author:             Griffin
      * @date:               2018/5/4
      * @time:               10:46
      * @param userName      用户名
@@ -76,7 +76,7 @@ public class LoginAction extends BaseAction {
 
     /*
      * @description         通过消息页登录
-     * @author:             Alex
+     * @author:             Griffin
      * @date:               2018/5/4
      * @time:               10:46
      * @param userName      用户名
@@ -90,7 +90,7 @@ public class LoginAction extends BaseAction {
 
     /*
      * @description         通过简历页登录
-     * @author:             Alex
+     * @author:             Griffin
      * @date:               2018/5/4
      * @time:               10:46
      * @param userName      用户名
@@ -104,7 +104,7 @@ public class LoginAction extends BaseAction {
 
     /*
      * @description         通过我的页登录
-     * @author:             Alex
+     * @author:             Griffin
      * @date:               2018/5/4
      * @time:               10:46
      * @param userName      用户名

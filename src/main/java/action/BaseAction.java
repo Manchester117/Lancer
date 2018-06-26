@@ -24,7 +24,7 @@ public class BaseAction {
 
     /*
     * @description:         对页面进行点击(不涉及具体元素)
-    * @author:              Zhao.Peng
+    * @author:              Griffin
     * @date:                2018/5/8
     * @time:                14:04
     * @param:
@@ -37,7 +37,7 @@ public class BaseAction {
 
     /*
     * @description: 执行ADB命令
-    * @author:      zhao.peng
+    * @author:      Griffin
     * @date:        2018/6/26
     * @time:        16:00
     * @param:       ADB命令字符串
@@ -49,7 +49,7 @@ public class BaseAction {
 
     /*
      * @description: 发送物理按键
-     * @author:      zhao.peng
+     * @author:      Griffin
      * @date:        2018/6/26
      * @time:        10:28
      * @param:       物理按键的Unicode
@@ -61,7 +61,7 @@ public class BaseAction {
 
     /*
      * @description         页面向左滑动
-     * @author:             Zhao.Peng
+     * @author:             Griffin
      * @date:               2018/5/4
      * @time:               10:46
      * @param times         滑动次数
@@ -74,7 +74,7 @@ public class BaseAction {
 
     /*
      * @description         页面向右滑动
-     * @author:             Zhao.Peng
+     * @author:             Griffin
      * @date:               2018/5/4
      * @time:               10:46
      * @param times         滑动次数
@@ -87,7 +87,7 @@ public class BaseAction {
 
     /*
      * @description         页面向上滑动
-     * @author:             Zhao.Peng
+     * @author:             Griffin
      * @date:               2018/5/4
      * @time:               10:46
      * @param times         滑动次数
@@ -100,7 +100,7 @@ public class BaseAction {
 
     /*
      * @description         页面向下滑动
-     * @author:             Zhao.Peng
+     * @author:             Griffin
      * @date:               2018/5/4
      * @time:               10:46
      * @param times         滑动次数
@@ -113,7 +113,7 @@ public class BaseAction {
 
     /*
     * @description:         关闭APP的操作
-    * @author:              Zhao.Peng
+    * @author:              Griffin
     * @date:                2018/5/7
     * @time:                14:46
     * @param:               被测App包名

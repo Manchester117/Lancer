@@ -15,7 +15,7 @@ public class DriverManager {
 
     /*
     * @description: 对MacacaDriver进行设置
-    * @author:      Alex
+    * @author:      Griffin
     * @date:        2018/5/4
     * @time:        10:56
     * @param:       runParams   Driver的配置参数
@@ -41,7 +41,7 @@ public class DriverManager {
 
     /*
     * @description: Driver的单例模式
-    * @author:      Alex
+    * @author:      Griffin
     * @date:        2018/5/4
     * @time:        10:57
     * @param:       runParams   Driver的配置参数

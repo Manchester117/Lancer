@@ -20,7 +20,7 @@ public class TestListener implements ITestListener {
 
     /*
     * @description: 给监听器设置Driver实例,用于后面的截图方法
-    * @author:      Alex
+    * @author:      Griffin
     * @date:        2018/5/4
     * @time:        10:51
     * @param:       macacaDriver    用户操作的Handler
@@ -32,7 +32,7 @@ public class TestListener implements ITestListener {
 
     /*
     * @description: 测试开始-定义报告存放文件夹以及获取报告实例
-    * @author:      Alex
+    * @author:      Griffin
     * @date:        2018/5/4
     * @time:        10:52
     * @param:       iTestContext    测试上下文
@@ -55,7 +55,7 @@ public class TestListener implements ITestListener {
 
     /*
     * @description: 测试完成-进行报告写入
-    * @author:      Alex
+    * @author:      Griffin
     * @date:        2018/5/4
     * @time:        10:53
     * @param:       iTestContext    测试上下文
@@ -68,7 +68,7 @@ public class TestListener implements ITestListener {
 
     /*
     * @description: 测试方法开始
-    * @author:      Alex
+    * @author:      Griffin
     * @date:        2018/5/4
     * @time:        10:54
     * @param:       iTestResult     测试方法的Handler
@@ -82,7 +82,7 @@ public class TestListener implements ITestListener {
 
     /*
      * @description: 测试方法验证成功-需要截图
-     * @author:      Alex
+     * @author:      Griffin
      * @date:        2018/5/4
      * @time:        10:54
      * @param:       iTestResult     测试方法的Handler
@@ -101,7 +101,7 @@ public class TestListener implements ITestListener {
 
     /*
      * @description: 测试方法验证失败-需要截图
-     * @author:      Alex
+     * @author:      Griffin
      * @date:        2018/5/4
      * @time:        10:54
      * @param:       iTestResult     测试方法的Handler
@@ -120,7 +120,7 @@ public class TestListener implements ITestListener {
 
     /*
     * @description: 测试方法跳过
-    * @author:      Alex
+    * @author:      Griffin
     * @date:        2018/5/4
     * @time:        10:55
     * @param:       iTestResult     测试方法Handler

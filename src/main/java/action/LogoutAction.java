@@ -8,7 +8,7 @@ public class LogoutAction extends BaseAction {
 
     /*
      * @description:        注销用户
-     * @author:             Alex
+     * @author:             Griffin
      * @date:               2018/5/4
      * @time:               10:46
      * @param driver        Macaca Driver
@@ -21,7 +21,7 @@ public class LogoutAction extends BaseAction {
     
     /*
     * @description: 注销用户
-    * @author:      Alex
+    * @author:      Griffin
     * @date:        2018/5/4
     * @time:        10:46
     * @param:
