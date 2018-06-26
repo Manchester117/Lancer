@@ -36,6 +36,18 @@ public class BaseAction {
     }
 
     /*
+     * @description: 发送物理按键
+     * @author:      zhao.peng
+     * @date:        2018/6/26
+     * @time:        10:28
+     * @param:       物理按键的Unicode
+     * @return:
+     */
+    public void physicalKey(String keyCode) {
+        page.physicalKey(keyCode);
+    }
+
+    /*
      * @description         页面向左滑动
      * @author:             Alex
      * @date:               2018/5/4

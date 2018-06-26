@@ -207,6 +207,25 @@ public class OperatorImpl implements Operator{
     }
 
     /*
+     * @description: 发送物理按键
+     * @author:      zhao.peng
+     * @date:        2018/6/25
+     * @time:        18:42
+     * @param:       物理按键EnumCode
+     * @return:
+     */
+    @Override
+    public void physicalKey(String keyCode) {
+        try {
+            this.driver.keys(keyCode);
+            logger.info(StringUtils.join("执行物理按键: ", keyCode));
+        } catch (Exception e) {
+            logger.warn("执行物理按键操作异常");
+            e.printStackTrace();
+        }
+    }
+
+    /*
      * @description: 使用adb命令向上滑动屏幕
      * @author:      zhao.peng
      * @date:        2018/6/21

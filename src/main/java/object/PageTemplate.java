@@ -101,6 +101,10 @@ public class PageTemplate {
         return this.operator.isElementExist(locator);
     }
 
+    public void physicalKey(String keyCode) {
+        this.operator.physicalKey(keyCode);
+    }
+
     public void swipeToUp() {
         this.operator.swipeToUp();
     }
