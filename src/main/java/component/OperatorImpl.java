@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-public class OperatorImpl implements Operator{
+public class OperatorImpl implements Operator {
     private static Logger logger = LogManager.getLogger(OperatorImpl.class);
     private MacacaClient driver = null;
 
@@ -31,13 +31,13 @@ public class OperatorImpl implements Operator{
     }
 
     /*
-     * @description: 获取屏幕大小-用于滑动屏幕
-     * @author:      Zhao.Peng
-     * @date:        2018/5/4
-     * @time:        11:01
-     * @param:
-     * @return:      返回屏幕大小的Map
-     */
+    * @description: 获取屏幕大小-用于滑动屏幕
+    * @author:      Zhao.Peng
+    * @date:        2018/5/4
+    * @time:        11:01
+    * @param:
+    * @return:      返回屏幕大小的Map
+    */
     private Map<String, Integer> getScreenSize() {
         Map<String, Integer> screenSizeInfo = new HashMap<>();
         try {
@@ -54,13 +54,13 @@ public class OperatorImpl implements Operator{
     }
 
     /*
-     * @description: 获取元素的基础方法
-     * @author:      Zhao.Peng
-     * @date:        2018/5/4
-     * @time:        11:01
-     * @param:       locator     元素实体
-     * @return:      返回元素
-     */
+    * @description: 获取元素的基础方法
+    * @author:      Zhao.Peng
+    * @date:        2018/5/4
+    * @time:        11:01
+    * @param:       locator     元素实体
+    * @return:      返回元素
+    */
     @Override
     public Element getElement(Locator locator) {
         Element element = null;
@@ -157,13 +157,13 @@ public class OperatorImpl implements Operator{
     }
 
     /*
-     * @description: 获取元素中的文本
-     * @author:      zhao.peng
-     * @date:        2018/6/21
-     * @time:        15:55
-     * @param:       locator    元素实体
-     * @return:      返回元素中的文本信息
-     */
+    * @description: 获取元素中的文本
+    * @author:      zhao.peng
+    * @date:        2018/6/21
+    * @time:        15:55
+    * @param:       locator    元素实体
+    * @return:      返回元素中的文本信息
+    */
     @Override
     public String getText(Locator locator) {
         if (Objects.isNull(locator)) {
@@ -182,13 +182,13 @@ public class OperatorImpl implements Operator{
     }
 
     /*
-     * @description: 判断元素是否存在
-     * @author:      zhao.peng
-     * @date:        2018/6/21
-     * @time:        15:56
-     * @param:       元素实体
-     * @return:      元素是否存在的boolean值
-     */
+    * @description: 判断元素是否存在
+    * @author:      zhao.peng
+    * @date:        2018/6/21
+    * @time:        15:56
+    * @param:       元素实体
+    * @return:      元素是否存在的boolean值
+    */
     @Override
     public boolean isElementExist(Locator locator) {
         if (Objects.isNull(locator)) {
@@ -207,6 +207,25 @@ public class OperatorImpl implements Operator{
     }
 
     /*
+    * @description: 发送ADB命令
+    * @author:      zhao.peng
+    * @date:        2018/6/26
+    * @time:        15:55
+    * @param:       ADB命令字符串
+    * @return:
+    */
+    @Override
+    public void executeADBCommand(String command) {
+        try {
+            Runtime.getRuntime().exec(command);
+            logger.info(StringUtils.join("执行ADB命令: ", command));
+        } catch (IOException e) {
+            logger.warn("执行ADB命令异常");
+            e.printStackTrace();
+        }
+    }
+
+    /*
      * @description: 发送物理按键
      * @author:      zhao.peng
      * @date:        2018/6/25
@@ -215,24 +234,19 @@ public class OperatorImpl implements Operator{
      * @return:
      */
     @Override
-    public void physicalKey(String keyCode) {
-        try {
-            this.driver.keys(keyCode);
-            logger.info(StringUtils.join("执行物理按键: ", keyCode));
-        } catch (Exception e) {
-            logger.warn("执行物理按键操作异常");
-            e.printStackTrace();
-        }
+    public void keyEvent(String keyCode) {
+        String keyCommand = MessageFormat.format("adb shell input keyevent {0}", keyCode);
+        this.executeADBCommand(keyCommand);
     }
 
     /*
-     * @description: 使用adb命令向上滑动屏幕
-     * @author:      zhao.peng
-     * @date:        2018/6/21
-     * @time:        15:57
-     * @param:
-     * @return:
-     */
+    * @description: 使用adb命令向上滑动屏幕
+    * @author:      zhao.peng
+    * @date:        2018/6/21
+    * @time:        15:57
+    * @param:
+    * @return:
+    */
     @Override
     public void swipeToUp() {
         Map<String, Integer> screenSizeInfo = this.getScreenSize();
@@ -252,13 +266,13 @@ public class OperatorImpl implements Operator{
     }
 
     /*
-     * @description: 使用adb命令向下滑动屏幕
-     * @author:      zhao.peng
-     * @date:        2018/6/21
-     * @time:        15:58
-     * @param:
-     * @return:
-     */
+    * @description: 使用adb命令向下滑动屏幕
+    * @author:      zhao.peng
+    * @date:        2018/6/21
+    * @time:        15:58
+    * @param:
+    * @return:
+    */
     @Override
     public void swipeToDown() {
         Map<String, Integer> screenSizeInfo = this.getScreenSize();
@@ -278,13 +292,13 @@ public class OperatorImpl implements Operator{
     }
 
     /*
-     * @description: 使用adb命令向左滑动屏幕
-     * @author:      zhao.peng
-     * @date:        2018/6/21
-     * @time:        15:58
-     * @param:
-     * @return:
-     */
+    * @description: 使用adb命令向左滑动屏幕
+    * @author:      zhao.peng
+    * @date:        2018/6/21
+    * @time:        15:58
+    * @param:
+    * @return:
+    */
     @Override
     public void swipeToLeft() {
         Map<String, Integer> screenSizeInfo = this.getScreenSize();
@@ -303,13 +317,13 @@ public class OperatorImpl implements Operator{
     }
 
     /*
-     * @description: 使用adb命令向右滑动屏幕
-     * @author:      zhao.peng
-     * @date:        2018/6/21
-     * @time:        15:59
-     * @param:
-     * @return:
-     */
+    * @description: 使用adb命令向右滑动屏幕
+    * @author:      zhao.peng
+    * @date:        2018/6/21
+    * @time:        15:59
+    * @param:
+    * @return:
+    */
     @Override
     public void swipeToRight() {
         Map<String, Integer> screenSizeInfo = this.getScreenSize();
@@ -328,13 +342,13 @@ public class OperatorImpl implements Operator{
     }
 
     /*
-     * @description: 使用adb命令退出App
-     * @author:      zhao.peng
-     * @date:        2018/6/21
-     * @time:        16:00
-     * @param:
-     * @return:
-     */
+    * @description: 使用adb命令退出App
+    * @author:      zhao.peng
+    * @date:        2018/6/21
+    * @time:        16:00
+    * @param:
+    * @return:
+    */
     @Override
     public void closeAppForAndroid(String packageName) {
         if (!StringUtils.isNoneBlank(packageName)) {
@@ -344,6 +358,7 @@ public class OperatorImpl implements Operator{
         String closeAppCommand = StringUtils.join("adb shell am force-stop ", packageName);
         try {
             Runtime.getRuntime().exec(closeAppCommand);
+            logger.info(StringUtils.join("退出APP-命令: ", closeAppCommand));
         } catch (IOException e) {
             logger.warn("退出App异常: ");
             e.printStackTrace();

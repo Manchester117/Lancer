@@ -20,7 +20,7 @@ public class PageTemplate {
 
     /*
     * @description: 页面模板实例化
-    * @author:      Alex
+    * @author:      Zhao.Peng
     * @date:        2018/5/4
     * @time:        11:15
     * @param:       driver   操作页面的Handler
@@ -32,7 +32,7 @@ public class PageTemplate {
 
     /*
     * @description: 页面模板实例化
-    * @author:      Alex
+    * @author:      Zhao.Peng
     * @date:        2018/5/4
     * @time:        11:16
     * @param:       driver   操作页面的Handler
@@ -46,7 +46,7 @@ public class PageTemplate {
 
     /*
     * @description: 设置当前的页面
-    * @author:      Alex
+    * @author:      Zhao.Peng
     * @date:        2018/5/4
     * @time:        14:19
     * @param:       moduleName  模块名称
@@ -61,7 +61,7 @@ public class PageTemplate {
 
     /*
     * @description: 根据元素名称从对象库获取元素对象
-    * @author:      Alex
+    * @author:      Zhao.Peng
     * @date:        2018/5/4
     * @time:        14:21
     * @param:       elementName 元素名称
@@ -101,8 +101,12 @@ public class PageTemplate {
         return this.operator.isElementExist(locator);
     }
 
-    public void physicalKey(String keyCode) {
-        this.operator.physicalKey(keyCode);
+    public void executeADBCommand(String command) {
+        this.operator.executeADBCommand(command);
+    }
+
+    public void keyEvent(String keyCode) {
+        this.operator.keyEvent(keyCode);
     }
 
     public void swipeToUp() {

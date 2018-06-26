@@ -16,8 +16,10 @@ public interface Operator {
     String getText(Locator locator);
     // 元素是否显示
     boolean isElementExist(Locator locator);
+    // 发送ADB命令
+    void executeADBCommand(String command);
     // 发送物理按键
-    void physicalKey(String keyCode);
+    void keyEvent(String keyCode);
     // 向上滑动
     void swipeToUp();
     // 向下滑动
