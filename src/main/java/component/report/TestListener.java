@@ -114,7 +114,7 @@ public class TestListener implements ITestListener {
             String paramInfo = StringUtils.join("参数: ", param.toString());
             test.get().info(paramInfo);
         }
-        test.get().fail(failMethodName + "||||" + iTestResult.getThrowable());
+        test.get().fail(StringUtils.join(failMethodName + "||||" + iTestResult.getThrowable()));
         Tools.takeScreenShot(reportFolderPath, failMethodName, driver, test);                     // 失败后截图
     }
 
