@@ -90,13 +90,13 @@ public class TestListener implements ITestListener {
      */
     @Override
     public void onTestSuccess(ITestResult iTestResult) {
-        String successMethodName = iTestResult.getMethod().getMethodName();
+        String methodName = iTestResult.getMethod().getMethodName();
         for (Object param: iTestResult.getParameters()) {
             String paramInfo = StringUtils.join("参数: ", param.toString());
             test.get().info(paramInfo);
         }
-        test.get().pass(StringUtils.join(successMethodName, "||||验证通过"));
-        Tools.takeScreenShot(reportFolderPath, successMethodName, driver, test);                  // 成功后截图
+        test.get().pass(StringUtils.join(methodName, "----验证通过"));
+        Tools.takeScreenShot(reportFolderPath, methodName, driver, test);                  // 成功后截图
     }
 
     /*
@@ -109,13 +109,13 @@ public class TestListener implements ITestListener {
      */
     @Override
     public void onTestFailure(ITestResult iTestResult) {
-        String failMethodName = iTestResult.getMethod().getMethodName();
+        String methodName = iTestResult.getMethod().getMethodName();
         for (Object param: iTestResult.getParameters()) {
             String paramInfo = StringUtils.join("参数: ", param.toString());
             test.get().info(paramInfo);
         }
-        test.get().fail(StringUtils.join(failMethodName + "||||" + iTestResult.getThrowable()));
-        Tools.takeScreenShot(reportFolderPath, failMethodName, driver, test);                     // 失败后截图
+        test.get().fail(StringUtils.join(methodName + "----" + iTestResult.getThrowable()));
+        Tools.takeScreenShot(reportFolderPath, methodName, driver, test);                     // 失败后截图
     }
 
     /*
@@ -128,7 +128,7 @@ public class TestListener implements ITestListener {
     */
     @Override
     public void onTestSkipped(ITestResult iTestResult) {
-        test.get().skip(StringUtils.join(iTestResult.getMethod().getMethodName(), "||||验证跳过"));
+        test.get().skip(StringUtils.join(iTestResult.getMethod().getMethodName(), "----验证跳过"));
     }
 
     @Override
