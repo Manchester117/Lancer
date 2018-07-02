@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-public class OperatorImpl implements Operator {
+public class OperatorImpl implements Operator{
     private static Logger logger = LogManager.getLogger(OperatorImpl.class);
     private MacacaClient driver = null;
 
@@ -81,7 +81,7 @@ public class OperatorImpl implements Operator {
                 logger.info(StringUtils.join("不是规定的元素标识: ", locator.getLocatorIdentify(), " 请使用正确id/xpath/name/class name进行元素定位"));
             }
         } catch (Exception e) {
-            logger.warn(StringUtils.join("找不到元素", locator));
+            logger.warn(StringUtils.join("找不到元素: ", locator));
             e.printStackTrace();
         }
         return element;
@@ -105,7 +105,27 @@ public class OperatorImpl implements Operator {
             element.click();
             logger.info(StringUtils.join("执行点击: ", locator.getLocatorIdentify()));
         } catch (Exception e) {
-            logger.warn("点击元素异常");
+            logger.warn(StringUtils.join("点击元素异常: ", locator.getLocatorIdentify()));
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void press(Locator locator, double duration) {
+        if (Objects.isNull(locator)) {
+            logger.warn(StringUtils.join("当前元素为空,无法长按操作"));
+            return;
+        }
+        Element element = this.getElement(locator);
+        double xCoordinate = 0.0;
+        double yCoordinate = 0.0;
+        try {
+            xCoordinate = element.getCenterX();
+            yCoordinate = element.getCenterY();
+            this.driver.press(xCoordinate, yCoordinate, duration);
+            logger.info(StringUtils.join("执行长按: ", locator.getLocatorIdentify()));
+        } catch (Exception e) {
+            logger.warn(StringUtils.join("获取长按元素坐标异常: ", locator.getLocatorIdentify()));
             e.printStackTrace();
         }
     }
@@ -128,7 +148,7 @@ public class OperatorImpl implements Operator {
             element.sendKeys(value);
             logger.info(StringUtils.join("执行输入: ", locator.getLocatorIdentify()));
         } catch (Exception e) {
-            logger.warn("输入文字异常");
+            logger.warn(StringUtils.join("输入文字异常: ", locator.getLocatorIdentify()));
             e.printStackTrace();
         }
     }
@@ -151,7 +171,7 @@ public class OperatorImpl implements Operator {
             element.clearText();
             logger.info(StringUtils.join("清空内容: ", locator.getLocatorIdentify()));
         } catch (Exception e) {
-            logger.warn("清空内容异常");
+            logger.warn(StringUtils.join("清空内容异常: ", locator.getLocatorIdentify()));
             e.printStackTrace();
         }
     }
@@ -175,7 +195,7 @@ public class OperatorImpl implements Operator {
             logger.info(StringUtils.join("获取元素内容: ", locator.getLocatorIdentify()));
             return element.getText();
         } catch (Exception e) {
-            logger.warn("获取元素文字异常");
+            logger.warn(StringUtils.join("获取元素文字异常: ", locator.getLocatorIdentify()));
             e.printStackTrace();
         }
         return null;
@@ -200,7 +220,7 @@ public class OperatorImpl implements Operator {
             isExist = this.driver.isElementExist(locator.getLocatorType(), locator.getLocatorIdentify());
             logger.info(StringUtils.join("判断元素是否存在: ", locator.getLocatorIdentify()));
         } catch (Exception e) {
-            logger.warn("执行判断元素操作异常");
+            logger.warn(StringUtils.join("执行判断元素操作异常: ", locator.getLocatorIdentify()));
             e.printStackTrace();
         }
         return isExist;
@@ -220,7 +240,7 @@ public class OperatorImpl implements Operator {
             Runtime.getRuntime().exec(command);
             logger.info(StringUtils.join("执行ADB命令: ", command));
         } catch (IOException e) {
-            logger.warn("执行ADB命令异常");
+            logger.warn(StringUtils.join("执行ADB命令异常: ", command));
             e.printStackTrace();
         }
     }
@@ -234,8 +254,8 @@ public class OperatorImpl implements Operator {
      * @return:
      */
     @Override
-    public void keyEvent(String keyCode) {
-        String keyCommand = MessageFormat.format("adb shell input keyevent {0}", keyCode);
+    public void keyEvent(String udid, String keyCode) {
+        String keyCommand = MessageFormat.format("adb -s {0} shell input keyevent {1}", udid, keyCode);
         this.executeADBCommand(keyCommand);
     }
 
@@ -248,19 +268,19 @@ public class OperatorImpl implements Operator {
     * @return:
     */
     @Override
-    public void swipeToUp() {
+    public void swipeToUp(String udid) {
         Map<String, Integer> screenSizeInfo = this.getScreenSize();
         Integer width = screenSizeInfo.get("width");
         Integer height = screenSizeInfo.get("height");
 
         // 直接使用adb命令来滑动页面
-        String swipeToUpCommand = MessageFormat.format("adb shell input touchscreen swipe {0} {1} {2} {3}", width / 2, height * 0.2, width / 2, height * 0.8, 200);
+        String swipeToUpCommand = MessageFormat.format("adb -s {0} shell input touchscreen swipe {1} {2} {3} {4}", udid, width / 2, height * 0.2, width / 2, height * 0.8, 200);
         try {
             this.driver.sleep(1000);
             Runtime.getRuntime().exec(swipeToUpCommand);
-            logger.info("向上滑动-命令: ", swipeToUpCommand);
+            logger.info(StringUtils.join("向上滑动-命令: ", swipeToUpCommand));
         } catch (Exception e) {
-            logger.warn("向上滑动屏幕异常");
+            logger.warn(StringUtils.join("向上滑动屏幕异常: ", swipeToUpCommand));
             e.printStackTrace();
         }
     }
@@ -274,19 +294,19 @@ public class OperatorImpl implements Operator {
     * @return:
     */
     @Override
-    public void swipeToDown() {
+    public void swipeToDown(String udid) {
         Map<String, Integer> screenSizeInfo = this.getScreenSize();
         Integer width = screenSizeInfo.get("width");
         Integer height = screenSizeInfo.get("height");
 
         // 直接使用adb命令来滑动页面
-        String swipeToDownCommand = MessageFormat.format("adb shell input touchscreen swipe {0} {1} {2} {3}", width / 2, height * 0.8, width / 2, height * 0.2, 200);
+        String swipeToDownCommand = MessageFormat.format("adb -s {0} shell input touchscreen swipe {1} {2} {3} {4}", udid, width / 2, height * 0.8, width / 2, height * 0.2, 200);
         try {
             this.driver.sleep(1000);
             Runtime.getRuntime().exec(swipeToDownCommand);
             logger.info(StringUtils.join("向下滑动-命令: ", swipeToDownCommand));
         } catch (Exception e) {
-            logger.warn("向下滑动屏幕异常");
+            logger.warn(StringUtils.join("向下滑动屏幕异常: ", swipeToDownCommand));
             e.printStackTrace();
         }
     }
@@ -300,18 +320,18 @@ public class OperatorImpl implements Operator {
     * @return:
     */
     @Override
-    public void swipeToLeft() {
+    public void swipeToLeft(String udid) {
         Map<String, Integer> screenSizeInfo = this.getScreenSize();
         Integer width = screenSizeInfo.get("width");
         Integer height = screenSizeInfo.get("height");
         // 直接使用adb命令来滑动页面
-        String swipeToLeftCommand = MessageFormat.format("adb shell input touchscreen swipe {0} {1} {2} {3}", width * 0.8, height / 2, width * 0.2, height / 2, 200);
+        String swipeToLeftCommand = MessageFormat.format("adb -s {0} shell input touchscreen swipe {1} {2} {3} {4}", udid, width * 0.8, height / 2, width * 0.2, height / 2, 200);
         try {
             this.driver.sleep(1000);
             Runtime.getRuntime().exec(swipeToLeftCommand);
             logger.info(StringUtils.join("向左滑动-命令: ", swipeToLeftCommand));
         } catch (Exception e) {
-            logger.warn("向左滑动屏幕异常");
+            logger.warn(StringUtils.join("向左滑动屏幕异常: ", swipeToLeftCommand));
             e.printStackTrace();
         }
     }
@@ -325,18 +345,18 @@ public class OperatorImpl implements Operator {
     * @return:
     */
     @Override
-    public void swipeToRight() {
+    public void swipeToRight(String udid) {
         Map<String, Integer> screenSizeInfo = this.getScreenSize();
         Integer width = screenSizeInfo.get("width");
         Integer height = screenSizeInfo.get("height");
         // 直接使用adb命令来滑动页面
-        String swipeToRightCommand = MessageFormat.format("adb shell input touchscreen swipe {0} {1} {2} {3}", width * 0.2, height / 2, width * 0.8, height / 2, 200);
+        String swipeToRightCommand = MessageFormat.format("adb -s {0} shell input touchscreen swipe {1} {2} {3} {4}", udid, width * 0.2, height / 2, width * 0.8, height / 2, 200);
         try {
             this.driver.sleep(1000);
             Runtime.getRuntime().exec(swipeToRightCommand);
             logger.info(StringUtils.join("向右滑动-命令: ", swipeToRightCommand));
         } catch (Exception e) {
-            logger.warn("向右滑动屏幕异常: ");
+            logger.warn(StringUtils.join("向右滑动屏幕异常: ", swipeToRightCommand));
             e.printStackTrace();
         }
     }
@@ -350,17 +370,17 @@ public class OperatorImpl implements Operator {
     * @return:
     */
     @Override
-    public void closeAppForAndroid(String packageName) {
+    public void closeAppForAndroid(String udid, String packageName) {
         if (!StringUtils.isNoneBlank(packageName)) {
             logger.warn(StringUtils.join("获取的App包名为空,无法退出App"));
             return;
         }
-        String closeAppCommand = StringUtils.join("adb shell am force-stop ", packageName);
+        String closeAppCommand = MessageFormat.format("adb -s {0} shell am force-stop {1}", udid, packageName);
         try {
             Runtime.getRuntime().exec(closeAppCommand);
             logger.info(StringUtils.join("退出APP-命令: ", closeAppCommand));
         } catch (IOException e) {
-            logger.warn("退出App异常: ");
+            logger.warn(StringUtils.join("退出App异常: ", closeAppCommand));
             e.printStackTrace();
         }
     }

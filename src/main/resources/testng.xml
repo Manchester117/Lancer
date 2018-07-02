@@ -1,30 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="XXXXAppTest">
+<suite name="HighPinAppTest" parallel="tests" thread-count="1">
     <!--对象仓库路径-->
-    <parameter name="repositoryPath" value="对象仓库的绝对路径"/>
+    <parameter name="repositoryPath" value="Repository Path"/>
     <!--报告输出路径(必须使用相对路径)-->
     <parameter name="reportRootPath" value="test-output"/>
     <!--Android配置参数-->
     <parameter name="platformName" value="Android"/>
-    <parameter name="app" value="APP的绝对路径"/>
-    <parameter name="udid" value="192.168.47.101:5555"/>
-    <parameter name="reuse" value="1"/>
-    <!--等待元素时长和间隔(单位:毫秒)-->
+    <!--APK在Host上的存放路径-->
+    <parameter name="app" value="APK Path"/>
+    <!--
+         0: 启动并安装App
+         1: 默认:卸载并重装App
+         2: 仅重装App
+         3: 直接使用已经安装的App,在测试结束后保持App状态
+    -->
+    <parameter name="reuse" value="0"/>
+    <!--等待元素时长(单位:毫秒)-->
     <parameter name="waitTimeInterval" value="200"/>
+    <!--等待元素间隔(单位:毫秒)-->
     <parameter name="waitTimeout" value="5000"/>
-    <!--用户名/密码-->
-    <parameter name="userName" value="xxxxxxx@qq.com"/>
-    <parameter name="password" value="xxxxxxx"/>
 
-    <test name="Workflow_1">
+    <test name="Android 7.1 Test" preserve-order="true">
+        <parameter name="port" value="3456"/>
+        <parameter name="udid" value="XXX.XXX.XXX.XXX:5555"/>
+        <parameter name="delay" value="0"/>
         <classes>
-            <class name="testcase.TestLoginAction">
-                <methods>
-                    <include name="loginBySubscribeNowPage"/>
-                    <include name="logoutByMorePage"/>
-                </methods>
-            </class>
+            <class name="testcase.TestLoginAction"/>
+            <class name="testcase.TestSearchJobAction"/>
         </classes>
     </test>
+    <!--<test name="Android 7.0 Test" preserve-order="true">-->
+        <!--<parameter name="port" value="3457"/>-->
+        <!--<parameter name="udid" value="192.168.6.102:5555"/>-->
+        <!--<parameter name="delay" value="1000"/>-->
+        <!--<classes>-->
+            <!--<class name="testcase.TestLoginAction"/>-->
+            <!--<class name="testcase.TestSearchJobAction"/>-->
+        <!--</classes>-->
+    <!--</test>-->
 </suite>

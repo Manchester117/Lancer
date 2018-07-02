@@ -7,7 +7,7 @@ public class Locator {
     private String locatorIdentify;
     /*
     * @description: APP页面元素实例化
-    * @author:      Alex
+    * @author:      Griffin
     * @date:        2018/5/4
     * @time:        11:13
     * @param:       locatorIdentify 元素的定位方式(默认以XPath定位)
@@ -20,7 +20,7 @@ public class Locator {
 
     /*
     * @description: APP页面元素实例化
-    * @author:      Alex
+    * @author:      Griffin
     * @date:        2018/5/4
     * @time:        11:14
     * @param:       locatorType     元素定位类型

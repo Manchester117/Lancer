@@ -8,6 +8,7 @@ import java.util.Date;
 
 public class LoginAction extends BaseAction {
     private PageTemplate page;
+
     /*
      * @description         登录的构造方法
      * @author:             Griffin
@@ -16,19 +17,19 @@ public class LoginAction extends BaseAction {
      * @param driver        Macaca Driver
      * @param repoPath      对象仓库路径
      */
-    public LoginAction(MacacaClient driver, String repoPath) {
-        super(driver, repoPath);
+    public LoginAction(MacacaClient driver, String udid, String repoPath) {
+        super(driver, udid, repoPath);
         page = new PageTemplate(driver, repoPath);
     }
 
     /*
-     * @description: 欢迎页的等待方法
-     * @author:      zhao.peng
-     * @date:        2018/6/21
-     * @time:        19:07
-     * @param:
-     * @return:      是否超时的Boolean值
-     */
+    * @description: 欢迎页的等待方法
+    * @author:      Griffin
+    * @date:        2018/6/21
+    * @time:        19:07
+    * @param:
+    * @return:      是否超时的Boolean值
+    */
     public Boolean welcomePageAppear() {
         Date beginTime = new Date();
         while (!this.isElementExist("PageElementModule", "欢迎页", "欢迎首页")) {

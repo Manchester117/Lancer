@@ -41,11 +41,10 @@ public class TestListener implements ITestListener {
     @Override
     public void onStart(ITestContext iTestContext) {
         String reportRootPath = iTestContext.getCurrentXmlTest().getParameter("reportRootPath");
-        String reportName = StringUtils.join("Report", "_", Tools.getTime());
-        String reportFullName = StringUtils.join(reportName, ".html");
-        reportFolderPath = Paths.get(reportRootPath, reportName).toString();
+        reportFolderPath = Paths.get(reportRootPath, "Report").toString();
         Tools.createFolder(reportFolderPath);                                                      // 创建存放报告的子文件夹
 
+        String reportFullName = "Report.html";
         String reportFullPath = Paths.get(reportFolderPath, reportFullName).toString();
 
         extent = ReportManager.getInstance(reportFullPath);                                        // 获取报告实例
@@ -95,7 +94,7 @@ public class TestListener implements ITestListener {
             String paramInfo = StringUtils.join("参数: ", param.toString());
             test.get().info(paramInfo);
         }
-        test.get().pass(StringUtils.join(methodName, "----验证通过"));
+        test.get().pass(StringUtils.join( methodName, "----验证通过"));
         Tools.takeScreenShot(reportFolderPath, methodName, driver, test);                  // 成功后截图
     }
 

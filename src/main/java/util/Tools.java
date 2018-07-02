@@ -29,14 +29,6 @@ public class Tools {
         }
     }
 
-    /*
-    * @description: 截图方法
-    * @author:      Griffin
-    * @date:        2018/6/26
-    * @time:        17:11
-    * @param:       报告路径, 测试方法名称, Macaca Driver, 当前报告线程
-    * @return:
-    */
     public static void takeScreenShot(String reportFolderPath, String methodName, MacacaClient driver, ThreadLocal<ExtentTest> test) {
         String pictureName = StringUtils.join(methodName, "_", getTime(), ".png");
         String pictureFullPath = Paths.get(reportFolderPath, pictureName).toString();
@@ -49,14 +41,6 @@ public class Tools {
         }
     }
 
-    /*
-    * @description: 创建报告存放目录
-    * @author:      Griffin
-    * @date:        2018/6/26
-    * @time:        17:11
-    * @param:       报告路径
-    * @return:
-    */
     public static void createFolder(String reportFolderPath) {
         File file = new File(reportFolderPath);
         if (!file.exists()) {

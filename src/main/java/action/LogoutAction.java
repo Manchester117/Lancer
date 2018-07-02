@@ -14,8 +14,8 @@ public class LogoutAction extends BaseAction {
      * @param driver        Macaca Driver
      * @param repoPath      对象仓库路径
      */
-    public LogoutAction(MacacaClient driver, String repoPath) {
-        super(driver, repoPath);
+    public LogoutAction(MacacaClient driver, String udid, String repoPath) {
+        super(driver, udid, repoPath);
         page = new PageTemplate(driver, repoPath);
     }
     
