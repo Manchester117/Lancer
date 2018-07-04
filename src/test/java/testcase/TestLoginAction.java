@@ -4,49 +4,54 @@ import action.BaseAction;
 import action.LoginAction;
 import action.LogoutAction;
 import component.report.TestListener;
+import component.driver.DriverConfig;
 import macaca.client.MacacaClient;
 import org.testng.Assert;
+import org.testng.SkipException;
 import org.testng.annotations.*;
 
 @Listeners({TestListener.class})
-public class TestLoginAction {
-    private Boolean swipeFlag = Boolean.TRUE;
+public class TestLoginAction{
     private BaseAction baseAction;
     private LoginAction loginAction;
     private LogoutAction logoutAction;
+    private Boolean welcomePageFlag = Boolean.TRUE;
 
-    @Parameters({"platformName", "app", "udid", "reuse", "repositoryPath", "waitTimeInterval", "waitTimeout"})
-    @BeforeTest
-    public void beforeTest(String platformName, String app, String udid, String reuse, String repositoryPath, String waitTimeInterval, String waitTimeout) {
-        MacacaClient driver = CaseConfigAction.getDriver(platformName, app, udid, reuse, waitTimeInterval, waitTimeout);
-        baseAction = new BaseAction(driver, repositoryPath);
-        loginAction = new LoginAction(driver, repositoryPath);
-        logoutAction = new LogoutAction(driver, repositoryPath);
+    @Parameters({"platformName", "app", "port", "udid", "reuse", "repositoryPath", "waitTimeInterval", "waitTimeout", "delay"})
+    @BeforeClass
+    public void beforeTest(String platformName, String app, String port, String udid, String reuse, String repositoryPath, String waitTimeInterval, String waitTimeout, String delay) {
+        MacacaClient driver = DriverConfig.getDriver(platformName, app, port, udid, reuse, waitTimeInterval, waitTimeout, delay);
+        baseAction = new BaseAction(driver, udid, repositoryPath);
+        loginAction = new LoginAction(driver, udid, repositoryPath);
+        logoutAction = new LogoutAction(driver, udid, repositoryPath);
     }
 
     @DataProvider(name = "signInData")
     public Object[][] signInData() {
         return new Object[][] {
-            {"XXXXXXX@qq.com", "XXXXXXXX"},
-            {"XXXXXXX2@qq.com", "XXXXXXXX"}
+            {"xxxx@xx.com", "xxxxxxx"},
         };
     }
 
-    @Test(priority = 0, description = "通过'XXXX'登录", dataProvider = "signInData")
+    @Test(description = "通过'立即订阅'登录", dataProvider = "signInData")
     public void loginBySubscribeNowPage(String userName, String password) {
-        if (swipeFlag) {
-            baseAction.swipePageToLeft(2);
-            baseAction.clickAnyPage("PageElementModule", "欢迎页", "欢迎页");
-            swipeFlag = Boolean.FALSE;
+        if (welcomePageFlag) {
+            if (!loginAction.welcomePageAppear())
+                // 如果欢迎首页没有出现,则手动跳过测试
+                throw new SkipException("跳过剩下的测试");
+            welcomePageFlag = Boolean.FALSE;
         }
+        baseAction.swipePageToLeft(2);
+        baseAction.clickAnyPage("PageElementModule", "欢迎页", "欢迎页");
+
         loginAction.loginBySubscribeNow(userName, password);
         String verifyText = loginAction.getText("PageElementModule", "机会页", "输入关键字");
         Assert.assertEquals("输入关键字", verifyText);
         logoutAction.Logout();
     }
 
-    @AfterTest
-    public void afterTest() {
-        baseAction.closeAppForAndroid("com.XXXX.XXXX");
+    @AfterClass
+    public void afterClass() {
+        baseAction.closeAppForAndroid("com.zhaopin.highpin");
     }
 }
