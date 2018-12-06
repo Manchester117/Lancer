@@ -1,7 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <repository>
     <page name="欢迎页">
+        <locator type="id" locator="com.zzzz.hhhh:id/viewpager">欢迎首页</locator>
         <locator type="xpath" locator="//android.widget.FrameLayout[@index='1']">欢迎页</locator>
+    </page>
+    <page name="基础页">
+        <locator type="xpath" locator="//android.widget.RadioButton[@text='机会']">机会</locator>
+        <locator type="xpath" locator="//android.widget.RadioButton[@text='消息']">消息</locator>
+        <locator type="xpath" locator="//android.widget.RadioButton[@text='简历']">简历</locator>
+        <locator type="xpath" locator="//android.widget.RadioButton[@text='我的']">我的</locator>
+    </page>
+    <page name="登录页">
+        <locator type="xpath" locator="//android.widget.LinearLayout[1]/android.widget.RelativeLayout[1]//android.widget.EditText[1]">用户名</locator>
+        <locator type="xpath" locator="//android.widget.LinearLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]//android.widget.EditText[1]">密码</locator>
+        <locator type="xpath" locator="//android.widget.Button[@text='登 录']">登录</locator>
+    </page>
+    <page name="机会页">
+        <locator type="xpath" locator="//*[@resource-id='com.zzzz.hhhh:id/add_subscribe_button']">立即订阅</locator>
+        <locator type="xpath" locator="//android.widget.TextView[@text='输入关键字']">输入关键字</locator>
+        <locator type="id" locator="com.zzzz.hhhh:id/text_search">关键字文本框</locator>
+    </page>
+    <page name="职位列表">
+        <locator type="id" locator="com.zzzz.hhhh:id/search_result_cancle">返回机会页</locator>
+    </page>
+    <page name="职位订阅">
+        <locator type="xpath" locator="//*[@resource-id='com.zzzz.hhhh:id/nav_back']/android.widget.ImageView[1]">退出</locator>
+    </page>
+    <page name="我的页">
+        <locator type="xpath" locator="//android.widget.TextView[@text='立即登录']">立即登录</locator>
+        <locator type="xpath" locator="//android.widget.TextView[@text='Hello,欢迎来到智联卓聘～']">登录之后的副标题</locator>
+        <locator type="xpath" locator="//android.widget.TextView[@text='更多...']">更多</locator>
+    </page>
+    <page name="更多">
+        <locator type="xpath" locator="//android.widget.TextView[@text='退出登录']">退出登录</locator>
     </page>
     <page name="退出对话框">
         <locator type="xpath" locator="//android.widget.Button[@text='确定']">确定</locator>

@@ -3,17 +3,17 @@ package testcase;
 import action.BaseAction;
 import action.LoginAction;
 import action.LogoutAction;
-import component.report.TestListener;
+import action.SearchJobAction;
 import component.driver.DriverConfig;
 import macaca.client.MacacaClient;
 import org.testng.Assert;
 import org.testng.SkipException;
 import org.testng.annotations.*;
 
-@Listeners({TestListener.class})
-public class TestLoginAction{
+public class TestSearchJobAction { ;
     private BaseAction baseAction;
     private LoginAction loginAction;
+    private SearchJobAction searchJobAction;
     private LogoutAction logoutAction;
     private Boolean welcomePageFlag = Boolean.TRUE;
 
@@ -23,6 +23,7 @@ public class TestLoginAction{
         MacacaClient driver = DriverConfig.getDriver(platformName, app, port, udid, reuse, waitTimeInterval, waitTimeout, delay);
         baseAction = new BaseAction(driver, udid, repositoryPath);
         loginAction = new LoginAction(driver, udid, repositoryPath);
+        searchJobAction = new SearchJobAction(driver, udid, repositoryPath);
         logoutAction = new LogoutAction(driver, udid, repositoryPath);
     }
 
@@ -47,6 +48,16 @@ public class TestLoginAction{
         loginAction.loginBySubscribeNow(userName, password);
         String verifyText = loginAction.getText("PageElementModule", "机会页", "输入关键字");
         Assert.assertEquals("输入关键字", verifyText);
+    }
+
+    @Test(dependsOnMethods = {"loginBySubscribeNowPage"}, description = "搜索职位")
+    public void searchJob() {
+        searchJobAction.searchJob("Java");
+        searchJobAction.quitJobList();
+    }
+
+    @Test(dependsOnMethods = {"searchJob"}, description = "退出登录")
+    public void logoutApp() {
         logoutAction.Logout();
     }
 
