@@ -38,7 +38,7 @@ public class TestSearchJobAction { ;
     public void loginBySubscribeNowPage(String userName, String password) {
         if (welcomePageFlag) {
             if (!loginAction.welcomePageAppear())
-                // 如果欢迎首页没有出现,则手动跳过测试
+                // 如果欢迎首页没有出现,则跳过测试
                 throw new SkipException("跳过剩下的测试");
             welcomePageFlag = Boolean.FALSE;
         }
