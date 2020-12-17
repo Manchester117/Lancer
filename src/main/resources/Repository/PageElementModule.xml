@@ -28,7 +28,7 @@
     </page>
     <page name="我的页">
         <locator type="xpath" locator="//android.widget.TextView[@text='立即登录']">立即登录</locator>
-        <locator type="xpath" locator="//android.widget.TextView[@text='Hello,欢迎来到智联卓聘～']">登录之后的副标题</locator>
+        <locator type="xpath" locator="//android.widget.TextView[@text='Hello,欢迎来到智联招聘～']">登录之后的副标题</locator>
         <locator type="xpath" locator="//android.widget.TextView[@text='更多...']">更多</locator>
     </page>
     <page name="更多">
